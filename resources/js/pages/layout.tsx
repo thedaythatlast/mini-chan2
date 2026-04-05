@@ -44,11 +44,13 @@ export default function Layout({
 }) {
 
     const [past, setPast] = useState([])
-    const url = usePage();
+    const auth = usePage();
 
     useEffect(() => {
-        axios.get('/past').then(res => setPast(res.data));
-    }, [url]); // fetch users' uuids
+        if (auth.props.auth.user) {
+            axios.get('/past').then(res => setPast(res.data));
+        }
+    }, [auth]); // fetch users' uuids
 
     return (
         <>
@@ -59,10 +61,12 @@ export default function Layout({
                 <Link href="/">New Chat</Link>
                 </Button>
 
-                {past.map((item) => (
-                    <div key={item._uuid} className="hover:shadow-xl">
-                    <Link href={`/chat/${item._uuid}`}>{item.title}</Link>
-                    </div>
+                {!auth.props.auth.user 
+                    ?   <div>Register/Login for the chat threads to be stored.</div>
+                    :   past.map((item) => (
+                        <div key={item._uuid} className="hover:shadow-xl">
+                        <Link href={`/chat/${item._uuid}`}>{item.title}</Link>
+                        </div>
                 ))}
               </SidebarContent>
             </Sidebar>

@@ -72,7 +72,7 @@ export default function Conversation({history}) {
 	        </div>
 		</Layout>
 
-		// TO DO: multiple models support. error handling (API failures, rate limits). 
+		// TO DO: multiple models support. error handling (API failures, rate limits). different guests get different historical threads
 		// Streaming responses, System prompt customization, Token usage display,send confirmation mail after registering + redirect to a page saying a confirmation mail has been sent.
 		// TO IMPROVE: Load each message into each row instead of an entire chat conversation into one row. Cap limit to guest's db storage (maybe clean after each day).
 		// Rewrite the codes: put the layout on welcome.tsx and let it wrap out the pages instead (something something using app.tsx, i need to ask claude later)

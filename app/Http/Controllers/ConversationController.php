@@ -10,13 +10,23 @@ class ConversationController extends Controller
 {
     public function conversation($uuid)
     {
-        // fetch data from sql if history null (in which case this function is used to fetch conversation history when enter address)
-        $history = session('history') 
-        ?? json_decode(DB::table('messages')->where('_uuid', $uuid)->value('_message'), true);
+        $message = DB::table('messages')->where('_uuid', $uuid)->first();
 
+        if (!$message) {
+            return redirect('/');
+        }
+
+        $username = auth()->user()?->name;
+
+        if ($message->username !== $username) {
+            return redirect('/');
+        }
+
+        $history = session('history') 
+            ?? json_decode($message->_message, true);
 
         return Inertia::render('conversation', [
-            'history'   => $history,
+            'history' => $history,
         ]);
     }
     
