@@ -1,6 +1,14 @@
+Deployment: 
+```
+https://mini-chan2-main-t8p5fr.free.laravel.cloud/
+```
 # Mini-chan
 
 A full-stack AI chat application built with Laravel, React, and Inertia.js. Integrates Groq's LLM API for responses, with persistent conversation history and user authentication.
+
+## Deployment
+
+
 
 ## Prerequisites
 - PHP 8.2+
