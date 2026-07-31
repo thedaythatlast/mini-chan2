@@ -1,7 +1,5 @@
-Deployment: 
-```
-https://mini-chan2-main-t8p5fr.free.laravel.cloud/
-```
+Deployment currently not available.
+
 # Mini-chan2
 
 A full-stack AI chat application built with Laravel, React, and Inertia.js. Styling = Tailwind, shadcn. Integrates Groq's LLM API (Llama 3.1 8B).
